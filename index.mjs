@@ -26,7 +26,7 @@ export default class ReleaseInk extends HTMLElement {
 	#updateLoop() {
 		setTimeout(() => {
 			const numberElement = this.shadowRoot.querySelector('.timer__number')
-			numberElement.innerText = this.#getSeconds(this.#getDiff())
+			numberElement.innerText = `${this.#getSeconds(this.#getDiff())}s (${this.#getDays(this.#getDiff())} dager)`
 			this.#updateLoop()
 
 		}, this.#updateIntervall)
@@ -69,7 +69,7 @@ export default class ReleaseInk extends HTMLElement {
 			<div class="timer" id="timer">
 				<span class="timer__number">0</span>
 			</div>
-			<button id="timerButton">Released version!</button>
+			<button id="timerButton">Slapp en release :)</button>
 		    </div>
 
 		`

@@ -3,15 +3,40 @@
 	<head>
 	    <meta charset="UTF-8">
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	    <title>Fancy Timer</title>
+	    <title>Await Release</title>
 	    <script type="module" src="./index.mjs"></script>
 	<style>
 		body {
 			background-color: #000000;
 		}
+		.image-container {
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+			align-items: center;
+		}
+		.blend-image {
+			width: 100%;
+			max-width: 500px;
+			/* Creates a soft fade towards the edges */
+			mask-image: radial-gradient(circle, black 40%, rgba(0, 0, 0, 0) 70%);
+			-webkit-mask-image: radial-gradient(circle, black 40%, rgba(0, 0, 0, 0) 70%);
+
+			/* Slight contrast boost to pop against the black */
+			filter: contrast(1.1) brightness(0.9);
+			transition: all 0.5s ease;
+		}
+
+		.blend-image:hover {
+			filter: contrast(1.2) brightness(1.1);
+			transform: scale(1.02);
+		}
 	</style>
 	</head>
 	<body>
 		<ri-root></ri-root>
+		<div class="image-container">
+			<img class="blend-image" src="./bilde.jpeg" />
+		</div>
 	</body>
 </html>
