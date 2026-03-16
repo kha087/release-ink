@@ -26,7 +26,9 @@ export default class ReleaseInk extends HTMLElement {
 	#updateLoop() {
 		setTimeout(() => {
 			const numberElement = this.shadowRoot.querySelector('.timer__number')
-			numberElement.innerText = `${this.#getSeconds(this.#getDiff())}s (${this.#getDays(this.#getDiff())} dager)`
+			numberElement.innerText = `${this.#getDays(this.#getDiff())} dager`
+			const numberElementSeconds = this.shadowRoot.querySelector('.timer__number_seconds')
+			numberElementSeconds.innerText = `${this.#getSeconds(this.#getDiff())}`
 			this.#updateLoop()
 
 		}, this.#updateIntervall)
@@ -70,6 +72,9 @@ export default class ReleaseInk extends HTMLElement {
 				<span class="timer__number">0</span>
 			</div>
 			<button id="timerButton">Slapp en release :)</button>
+			<div class="timer" id="timer">
+				<span id="seconds-timer" class="timer__number_seconds">0</span>
+			</div>
 		    </div>
 
 		`
@@ -87,6 +92,10 @@ export default class ReleaseInk extends HTMLElement {
 			    margin: 0;
 			    background: #1a1a1a;
 			    font-family: 'Arial', sans-serif;
+			}
+
+			.second-counter {
+				font-size: 20px;
 			}
 
 			.container {
@@ -133,6 +142,9 @@ export default class ReleaseInk extends HTMLElement {
 			    animation: buttonFloat 3s ease-in-out infinite alternate;
 			}
 
+			#seconds-timer {
+				font-size: 24px;
+			}
 			button:hover {
 			    transform: scale(1.05);
 			    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
